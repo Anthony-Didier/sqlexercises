@@ -1,0 +1,39 @@
+CREATE DATABASE exosSQL;
+
+USE exosSQL;
+
+CREATE TABLE Matter (
+    codemat varchar(255) NOT NULL,
+    wording varchar(255),
+    coef float,
+	PRIMARY KEY (codemat)
+);
+
+CREATE TABLE Student (
+    numstud int NOT NULL AUTO_INCREMENT,
+    name varchar(255),
+    firstname varchar(255),
+	dateofbirth Date,
+    street varchar(255),
+	postalcod varchar(5),
+    city varchar(255),
+	PRIMARY KEY (numstud)
+);
+
+CREATE TABLE Test (
+    numtest int NOT NULL AUTO_INCREMENT,
+    testdate Date NOT NULL,
+    place varchar(255),
+    codemat varchar(255) NOT NULL,
+    PRIMARY KEY (numtest),
+    FOREIGN KEY (codemat) REFERENCES Matter(codemat)
+);
+
+CREATE TABLE Notation (
+    numstud int NOT NULL,
+    numtest int NOT NULL,
+	score float,
+    PRIMARY KEY (numstud, numtest),
+    FOREIGN KEY (numstud) REFERENCES Student(numstud),
+    FOREIGN KEY (numtest) REFERENCES Test(numtest)
+);

@@ -1,0 +1,5 @@
+SELECT wording, CONCAT(CAST(coef * 100 AS DECIMAL(18, 2)), " %") AS "coef_in_%"
+FROM Matter;
+
+SELECT SUM(coef)
+FROM Matter;
